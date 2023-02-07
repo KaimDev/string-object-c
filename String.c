@@ -1,17 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <inttypes.h>
-
-struct _String
-{
-    char   *data;
-    size_t capacity;
-    size_t size;
-};
-
-typedef struct _String String;
-typedef struct _Person Person;
+#include "String.h"
 
 String* StringNew()
 {
@@ -32,7 +19,7 @@ void StringDestroy(String* string)
 
 void StringAdd(String* string, char letter)
 {
-    if (string->size <= string->capacity)
+    if (string->size == string->capacity)
     {
         string->capacity *= 2;
         char* temp = (char*)realloc(string->data, string->capacity * sizeof(char));
@@ -72,7 +59,7 @@ int StringCompare(String* first, String* second)
 {
     for (size_t i = 0 ;; ++i)
     {
-        if (first->data[i] == '\0' && second->data[i] == '\0')
+        if (first->data[i] == '\0' || second->data[i] == '\0')
         {
             break;
         }
@@ -107,8 +94,7 @@ char* StringData(String* string)
     return string->data;
 }
 
-void Buffer()
+int32_t main()
 {
-    char buffer[1024];
-    fgets(buffer, 1024, stdin);
+    return EXIT_SUCCESS;
 }
