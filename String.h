@@ -26,4 +26,6 @@ void StringSet(String*, int32_t /*index*/, char /*letra*/);
 char* StringGet(String*, int32_t /*index*/);
 char* StringData(String*); // Data
 
+String* ReadLine();
+
 #endif /* E070E5AC_0D41_4EF1_94DD_83C9F15AA563 */

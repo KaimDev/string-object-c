@@ -86,15 +86,35 @@ void StringSet(String* string, int32_t index, char letter)
 
 char* StringGet(String* string, int32_t index)
 {
+    if (index > string->size)
+    {
+        puts("Index out of scope");
+        return "";
+    }
     return &string->data[index];
 }
 
 char* StringData(String* string)
 {
+    if (string->size == 0)
+    {
+        puts("Empty");
+        return "";
+    }
     return string->data;
 }
 
-int32_t main()
+String* ReadLine()
 {
-    return EXIT_SUCCESS;
+    String* string = StringNew();
+    char word[50];
+
+    fgets(word, 50, stdin);
+
+    for (size_t i = 0 ; i < strlen(word) ; ++i)
+    {
+        StringAdd(string, word[i]);
+    }
+
+    return string;
 }
