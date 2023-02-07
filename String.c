@@ -80,13 +80,19 @@ int StringCompare(String* first, String* second)
 
 void StringSet(String* string, int32_t index, char letter)
 {
+    if (index > string->size || index < 0)
+    {
+        puts("Index out of scope");
+        return;
+    }
+
     string->data[index] = letter;
 }
 
 
 char* StringGet(String* string, int32_t index)
 {
-    if (index > string->size)
+    if (index > string->size || index < 0)
     {
         puts("Index out of scope");
         return "";
